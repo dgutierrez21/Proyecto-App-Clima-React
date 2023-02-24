@@ -11,7 +11,7 @@ export const WeatherForm = ({ onChangeCity }) => {
     }
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
     e.preventDefault();
 
     onChangeCity(city);

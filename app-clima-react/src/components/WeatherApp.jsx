@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { REACT_APP_KEY, REACT_APP_URL } from "../../setup";
 import { WeatherForm } from "./WeatherForm";
+import { WeatherMainInfo } from "./WeatherMainInfo";
 
 const WeatherApp = () => {
   const [weather, setWeather] = useState(null);
+
+  useEffect(() => {
+    loadInfo();
+  }, []);
+
+  useEffect(() => {
+    document.title = `Weather | ${weather?.location.name ?? ""}`;
+  }, [weather]);
 
   async function loadInfo(city = "london") {
     try {
@@ -29,7 +38,7 @@ const WeatherApp = () => {
     <>
       <WeatherForm onChangeCity={handleChangeCity} />
 
-      <div>{weather?.current.temp_c}</div>
+      <WeatherMainInfo weather={weather} />
     </>
   );
 };

@@ -19,7 +19,9 @@ export const WeatherMainInfo = ({ weather }) => {
           <div className={styles.condition}>
             {weather?.current.condition.text}
           </div>
-          <div className={styles.current}>{weather?.current.temp_c}°C</div>
+          <div className={styles.current}>
+            {weather?.current.temp_c} °C / {weather?.current.temp_f} °F
+          </div>
         </div>
       </div>
 

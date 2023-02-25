@@ -3,6 +3,8 @@ import { REACT_APP_KEY, REACT_APP_URL } from "../../setup";
 import { WeatherForm } from "./WeatherForm";
 import { WeatherMainInfo } from "./WeatherMainInfo";
 
+import styles from "./modulesCss/WeatherApp.module.css";
+
 const WeatherApp = () => {
   const [weather, setWeather] = useState(null);
 
@@ -35,11 +37,11 @@ const WeatherApp = () => {
   }
 
   return (
-    <>
+    <div className={styles.weatherContainer}>
       <WeatherForm onChangeCity={handleChangeCity} />
 
       <WeatherMainInfo weather={weather} />
-    </>
+    </div>
   );
 };
 

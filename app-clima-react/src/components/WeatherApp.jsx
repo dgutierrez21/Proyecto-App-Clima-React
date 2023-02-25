@@ -4,6 +4,7 @@ import { WeatherForm } from "./WeatherForm";
 import { WeatherMainInfo } from "./WeatherMainInfo";
 
 import styles from "./modulesCss/WeatherApp.module.css";
+import { Loading } from "./Loading";
 
 const WeatherApp = () => {
   const [weather, setWeather] = useState(null);
@@ -12,7 +13,7 @@ const WeatherApp = () => {
 
   useEffect(() => {
     inputRef.current.focus();
-    
+
     loadInfo();
   }, []);
 
@@ -28,7 +29,9 @@ const WeatherApp = () => {
 
       const json = await request.json();
 
-      setWeather(json);
+      setTimeout(() => {
+        setWeather(json);
+      }, 1000);
 
       console.log(json);
     } catch (error) {}
@@ -43,8 +46,7 @@ const WeatherApp = () => {
   return (
     <div className={styles.weatherContainer}>
       <WeatherForm inputRef={inputRef} onChangeCity={handleChangeCity} />
-
-      <WeatherMainInfo weather={weather} />
+      {weather ? <WeatherMainInfo weather={weather} /> : <Loading />}
     </div>
   );
 };

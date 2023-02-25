@@ -18,7 +18,11 @@ const WeatherApp = () => {
   }, []);
 
   useEffect(() => {
-    document.title = `Weather | ${weather?.location.name ?? ""}`;
+    try {
+      document.title = `Weather | ${weather?.location.name ?? ""}`;
+    } catch (error) {
+      document.title = "Weather | Not Found";
+    }
   }, [weather]);
 
   async function loadInfo(city = "Washington") {
@@ -34,7 +38,9 @@ const WeatherApp = () => {
       }, 1000);
 
       console.log(json);
-    } catch (error) {}
+    } catch (error) {
+      console.log("Catch Error.");
+    }
   }
 
   function handleChangeCity(city) {

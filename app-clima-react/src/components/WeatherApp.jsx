@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { REACT_APP_KEY, REACT_APP_URL } from "../../setup";
 import { WeatherForm } from "./WeatherForm";
 import { WeatherMainInfo } from "./WeatherMainInfo";
@@ -8,7 +8,11 @@ import styles from "./modulesCss/WeatherApp.module.css";
 const WeatherApp = () => {
   const [weather, setWeather] = useState(null);
 
+  const inputRef = useRef(null);
+
   useEffect(() => {
+    inputRef.current.focus();
+    
     loadInfo();
   }, []);
 
@@ -38,7 +42,7 @@ const WeatherApp = () => {
 
   return (
     <div className={styles.weatherContainer}>
-      <WeatherForm onChangeCity={handleChangeCity} />
+      <WeatherForm inputRef={inputRef} onChangeCity={handleChangeCity} />
 
       <WeatherMainInfo weather={weather} />
     </div>

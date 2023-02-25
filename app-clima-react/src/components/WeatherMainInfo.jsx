@@ -1,10 +1,12 @@
+import styles from "./modulesCss/WeatherMainInfo.module.css";
+
 export const WeatherMainInfo = ({ weather }) => {
   return (
-    <>
-      <div>{weather?.location.name}</div>
-      <div>{weather?.location.country}</div>
+    <div className={styles.mainInfo}>
+      <div className={styles.city}>{weather?.location.name}</div>
+      <div className={styles.country}>{weather?.location.country}</div>
 
-      <div>
+      <div className={styles.row}>
         <div>
           <img
             src={`http:${weather?.current.condition.icon}`}
@@ -13,9 +15,11 @@ export const WeatherMainInfo = ({ weather }) => {
           />
         </div>
 
-        <div>
-          <div>{weather?.current.condition.text}</div>
-          <div>{weather?.current.temp_c}°C</div>
+        <div className={styles.weatherConditions}>
+          <div className={styles.condition}>
+            {weather?.current.condition.text}
+          </div>
+          <div className={styles.current}>{weather?.current.temp_c}°C</div>
         </div>
       </div>
 
@@ -28,6 +32,6 @@ export const WeatherMainInfo = ({ weather }) => {
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
-    </>
+    </div>
   );
 };

@@ -27,6 +27,7 @@ export const WeatherForm = ({ onChangeCity, inputRef }) => {
           className={styles.input}
           type="text"
           onChange={onChange}
+          placeholder="Search a city"
         />
       </form>
     </>

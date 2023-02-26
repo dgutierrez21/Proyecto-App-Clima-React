@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import styles from "./modulesCss/WeatherForm.module.css";
 
 export const WeatherForm = ({ onChangeCity, inputRef }) => {
   const [city, setCity] = useState("");
+
+  const prevCity = useRef();
 
   function onChange(e) {
     const value = e.target.value;
@@ -16,7 +18,13 @@ export const WeatherForm = ({ onChangeCity, inputRef }) => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    onChangeCity(city);
+    const value = e.target[0].value;
+
+    if (value !== "" && city !== prevCity.current) {
+      onChangeCity(city);
+    }
+
+    prevCity.current = value;
   }
 
   return (

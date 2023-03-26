@@ -37,7 +37,7 @@ export const WeatherForm = ({ onChangeCity, inputRef }) => {
           onChange={onChange}
           placeholder="Search a city"
         />
-        <button className="mt-2 w-50 btn btn-dark">Search</button>
+        <button className={`${styles.submitBtn} btn`}>Search</button>
       </form>
     </>
   );

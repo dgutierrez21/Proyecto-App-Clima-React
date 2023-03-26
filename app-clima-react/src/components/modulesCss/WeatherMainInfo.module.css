@@ -30,3 +30,21 @@
   font-size: 38px;
   font-weight: bold;
 }
+
+.mapContainer {
+  width: 100%;
+  height: 325px;
+  border: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .current {
+    font-size: 25px;
+  }
+  .mainInfo {
+    padding: 20px;
+  }
+  .mapContainer {
+    height: 250px;
+  }
+}

@@ -12,8 +12,6 @@ const WeatherApp = () => {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    inputRef.current.focus();
-
     loadInfo();
   }, []);
 
@@ -35,6 +33,7 @@ const WeatherApp = () => {
 
       setTimeout(() => {
         setWeather(json);
+        inputRef.current.focus();
       }, 1000);
 
       console.log(json);

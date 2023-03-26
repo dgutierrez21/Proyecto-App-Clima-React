@@ -4,9 +4,11 @@
   border-radius: 5px;
   box-sizing: border-box;
   display: flex;
-  height: 634px;
+  height: 616px;
   justify-content: center;
   width: 500px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .loader {
@@ -43,5 +45,11 @@
   }
   to {
     transform: rotate(358deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .loadingContainer {
+    height: 501px;
   }
 }
